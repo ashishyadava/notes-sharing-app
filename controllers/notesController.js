@@ -54,3 +54,36 @@ exports.deleteNote = async(req, res) => {
         res.status(500).send("Error deleting note");
     }
 }
+
+exports.editNote = async(req, res) => {
+
+  const noteId = Number(req.params.id);
+  const {heading, content} = req.body;
+
+  try{
+      const result = await pool.query("UPDATE notes SET heading = $1, content = $2 WHERE note_id = $3", [heading, content, noteId]);
+      res.redirect('/notes');
+  }catch(err) {
+      console.error(err);
+      res.status(500).send("Error deleting note");
+  }
+}
+
+exports.showEditForm = async (req, res) => {
+  const noteId = req.params.id;
+
+  try {
+    
+    const result = await pool.query("SELECT * FROM notes WHERE note_id = $1", [noteId]);
+    const note = result.rows[0];
+    console.log(note);
+    res.render('edit-note', { note });
+
+
+  } catch (error) {
+      console.error(error)
+      res.status(500).send("Error retriving note");
+  }
+
+
+}

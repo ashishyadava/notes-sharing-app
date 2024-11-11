@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h2>Edit your note:</h2>
+  <form action="/notes/edit/<%= note.note_id %>" method="post">
+    <p>Note Heading: </p> <input name="heading" placeholder="Note Heading" value="<%- note.heading %>" required/>
+    <p>Note Content: </p> <textarea name="content" placeholder="Write your note here..."required><%- note.content %></textarea>
+    <br/>
+    <button type="submit">Edit Note</button>
+  </form>
+</body>
+</html>
