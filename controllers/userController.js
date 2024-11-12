@@ -1,4 +1,6 @@
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
+const pool = require("./../db/pool")
 
 
 exports.getHomePage = (req, res) => {
@@ -19,15 +21,25 @@ exports.logOut = (req, res, next) => {
 }
 
 exports.signUp = async (req, res, next) => {
+
+  bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+    // if err, do something
+    // otherwise, store hashedPassword in DB
+    if(err) {
+      return next(err);
+    }
     try {
       await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [
         req.body.username,
-        req.body.password,
+        hashedPassword,
       ]);
       res.redirect("/");
-    } catch(err) {
-      return next(err);
-    }
+      }catch(err) {
+        return next(err);
+      }
+  });
+  
+    
   }
 
 exports.login = passport.authenticate("local", {
