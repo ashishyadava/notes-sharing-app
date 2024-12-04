@@ -1,0 +1,69 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
+/* Form Container */
+form {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    align-self: center;
+}
+
+/* Form Heading */
+h1 {
+    text-align: center;
+    color: #444;
+    flex-basis: 100%;
+}
+
+/* Form Labels */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Form Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Form Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
